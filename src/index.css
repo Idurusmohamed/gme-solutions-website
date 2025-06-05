@@ -1,22 +1,18 @@
-
 /* src/index.css */
 @import "tailwindcss";
 
-/* You can also add custom base styles or component layers here if needed later */
-/* For example:
-@layer base {
-  h1 {
-    @apply text-2xl;
-  }
-}
-*/
+/* These :root styles are often part of Vite's default template. */
+/* They set up some basic typography and color schemes. */
+/* Tailwind CSS also provides its own base styles (Preflight) and ways to manage themes. */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color-scheme: light dark; /* Informs the browser about supported color schemes */
+  
+  /* Default dark mode text and background (will apply if no other styles override for dark mode) */
+  color: rgba(255, 255, 255, 0.87); 
   background-color: #242424;
 
   font-synthesis: none;
@@ -25,25 +21,41 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+body {
+  @apply bg-white; /* Tailwind utility to set a light background by default.
+                     This overrides the background-color from :root for light mode.
+                     For dark mode, you'd typically use Tailwind's dark: prefix on elements
+                     (e.g., dark:bg-gray-900) or configure dark mode in tailwind.config.js. */
+  margin: 0;      /* Good practice: removes default browser margins. */
+  
+  /* --- CRITICAL FIX: REMOVED THESE LINES --- */
+  /* display: flex; */
+  /* place-items: center; */
+  /* --- END OF CRITICAL FIX --- */
+  
+  min-width: 320px; /* Ensures a minimum responsive width. */
+  min-height: 100vh; /* Ensures the body takes at least the full viewport height. */
+  
+  /* Font properties from :root will generally be inherited by the body, 
+     unless overridden by Tailwind's base styles or specific utility classes. */
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* The styles below are default Vite styles for common elements. */
+/* You can keep them as a very basic baseline, or remove them entirely and */
+/* style these elements explicitly with Tailwind CSS classes in your components */
+/* or by defining base styles using @layer base in this file for a more Tailwind-idiomatic approach. */
+
+a {
+  font-weight: 500;
+  color: #646cff; /* Default link color (often for dark mode if :root color applies) */
+  text-decoration: inherit; /* Removes default underline, Tailwind can add it back with `underline` class */
+}
+a:hover {
+  color: #535bf2; /* Default link hover color */
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.2em; /* Large default size for h1 */
   line-height: 1.1;
 }
 
@@ -53,8 +65,9 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: inherit; /* Inherits font from body/:root */
+  background-color: #1a1a1a; /* Default dark mode button background */
+  color: rgba(255, 255, 255, 0.87); /* Ensures button text is light on dark background */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -66,15 +79,19 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* This media query provides default light mode styles if the browser prefers light mode. */
+/* Tailwind's own dark mode strategy (configured in tailwind.config.js) is often preferred for more control. */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* These will apply if the browser is in light mode and no more specific styles override them */
+    color: #213547; /* Default light mode text color */
+    background-color: #ffffff; /* Default light mode background (body @apply bg-white also sets this) */
   }
   a:hover {
-    color: #747bff;
+    color: #747bff; /* Light mode link hover */
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light mode button background */
+    color: #213547; /* Ensures button text is dark on light background */
   }
 }

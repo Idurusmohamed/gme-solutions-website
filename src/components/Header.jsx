@@ -1,22 +1,42 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
-
-// You might want to place your logo here
-// For now, we'll just use text
-// import gmeLogo from '../assets/gme-logo.png'; // Example: if you add a logo to src/assets
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header style={{ padding: '1rem', backgroundColor: '#f0f0f0', textAlign: 'center' }}>
-      {/* <img src={gmeLogo} alt="GME Solutions LLC Logo" style={{ height: '50px' }} /> */}
-      <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
-        <h1>GME Solutions LLC</h1>
+    <header className="bg-gray-100 py-6 text-center shadow-lg">
+      <Link 
+        to="/" 
+        // Refined: Removed explicit blue color, inherits text color, hover effect for clickability
+        className="text-4xl font-extrabold text-gray-900 hover:text-blue-700 no-underline transition-colors duration-300"
+      >
+        GME Solutions LLC
       </Link>
-      <p>Fast. Reliable. GME.</p> {/* Your tagline [3] */}
-      <div style={{ marginTop: '0.5rem' }}>
-        <span>+1 678 510 6050</span> | {/* [3] */}
-        <span> Ahmed@gmesolutionsllc.com</span> | {/* [3] */}
-        <span> MON TO SUN (24 HRS)</span> {/* [3] */}
+      
+      <p className="text-md text-gray-800 mt-1 italic"> 
+        Fast. Reliable. GME.
+      </p>
+      
+      <div className="mt-3 text-sm text-gray-800 space-x-2 md:space-x-4"> 
+        {/* Refined: Links will inherit text-gray-800, hover changes to blue */}
+        <span>
+          <a 
+            href="tel:+16785106050" 
+            className="text-current hover:text-blue-700 hover:underline transition-colors duration-300"
+          >
+            +1 678 510 6050
+          </a>
+        </span>
+        <span className="hidden md:inline">|</span>
+        <span>
+          <a 
+            href="mailto:Ahmed@gmesolutionsllc.com" 
+            className="text-current hover:text-blue-700 hover:underline transition-colors duration-300"
+          >
+            Ahmed@gmesolutionsllc.com
+          </a>
+        </span>
+        <span className="hidden md:inline">|</span>
+        <span>MON TO SUN (24 HRS)</span>
       </div>
     </header>
   );
