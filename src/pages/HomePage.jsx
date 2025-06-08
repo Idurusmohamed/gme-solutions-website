@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // For internal navigation
+import AnimatedNumber from '../components/AnimatedNumber'; // <-- Import the new component
+import { motion } from 'framer-motion'; // <-- Import motion
 
 // You might want to import an actual hero image later
 // import heroImage from '../assets/gme-hero-truck.jpg'; // Example path
@@ -73,9 +75,46 @@ const HomePage = () => {
         </div>
       </section>
 
-      // src/pages/HomePage.jsx
+      {/* NEW: Animated Statistics Section */}
+      <section className="py-16 lg:py-24 bg-gray-800 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold">GME Solutions LLC By The Numbers</h2>
+            <p className="mt-4 text-lg text-gray-300">Our commitment to excellence, quantified.</p>
+          </div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Statistic 1 */}
+            <div className="bg-gray-700 p-8 rounded-lg">
+              <span className="text-5xl font-extrabold text-yellow-400">
+                <AnimatedNumber value={12} />+
+              </span>
+              <p className="mt-2 text-lg text-gray-300">Years in Business</p>
+            </div>
+            {/* Statistic 2 */}
+            <div className="bg-gray-700 p-8 rounded-lg">
+              <span className="text-5xl font-extrabold text-yellow-400">
+                <AnimatedNumber value={4} />
+              </span>
+              <p className="mt-2 text-lg text-gray-300">Power Units in Fleet</p>
+            </div>
+            {/* Statistic 3 */}
+            <div className="bg-gray-700 p-8 rounded-lg">
+              <span className="text-5xl font-extrabold text-yellow-400">
+                <AnimatedNumber value={100} />%
+              </span>
+              <p className="mt-2 text-lg text-gray-300">On-Time Delivery Focus</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-//... (Hero Section and Services Overview Section remain the same)...
+      // src/pages/HomePage.jsx
 
       {/* Mission & About GME Snippet - REFINED for consistent background */}
       <section className="py-16 lg:py-24 bg-white"> {/* Entire section is bg-white */}
