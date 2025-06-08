@@ -1,9 +1,13 @@
 // src/pages/ServicesPage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const ServicesPage = () => {
+  const position = [33.6934, -84.1443]; // Approx. coordinates for Lithonia, GA
+
   return (
+  <div className="bg-white">    
     <div className="bg-gray-50 py-12 md:py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-5xl font-bold text-center text-blue-700 mb-8">

@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage';     // Import new page
 import RequestQuotePage from './pages/RequestQuotePage';
 import ContactPage from './pages/ContactPage';   // Import new page
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'; // Import new page
+import FAQPage from './pages/FAQPage'; // <-- Import
 // import NotFoundPage from './pages/NotFoundPage'; // Optional: for 404 errors
 
 import './App.css'; 
@@ -23,6 +24,7 @@ function App() {
           <Route path="quote" element={<RequestQuotePage />} />
           <Route path="contact" element={<ContactPage />} />     {/* Add route */}
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} /> {/* Add route */}
+          <Route path="faq" element={<FAQPage />} /> {/* <-- Add route */}
           {/* <Route path="*" element={<NotFoundPage />} />  // Catches any undefined routes */}
         </Route>
       </Routes>
