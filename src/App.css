@@ -1,9 +1,18 @@
+/* App.css */
+
+/* Remove or comment out these problematic #root styles */
+/* 
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} 
+*/
+
+/* Keep other styles if you need them, but be mindful of global impacts */
+/* For a Tailwind CSS project, you often want to minimize custom global CSS */
+/* and rely on utility classes or component-scoped styles. */
 
 .logo {
   height: 6em;
@@ -28,7 +37,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  a:nth-of-type(2).logo {
     animation: logo-spin infinite 20s linear;
   }
 }
