@@ -7,7 +7,32 @@ import React from 'react';
 // import idurusMohamedImg from '../assets/team/idurus-mohamed.jpg';
 // import sumeyaMohamedImg from '../assets/team/sumeya-mohamed.jpg';
 
-const teamMembers =;
+const teamMembers = [
+  {
+    name: "Ahmed Hassan",
+    role: "Founder & CEO",
+    description: "Founded GME Solutions LLC in 2012 and leads the company with a vision for reliable and safe freight delivery.",
+    // image: ahmedHassanImg,
+  },
+  {
+    name: "Mahamad Bakhdad",
+    role: "Operations Manager",
+    description: "Oversees daily operations and ensures smooth logistics and dispatch for all shipments.",
+    // image: mahamadBakhdadImg,
+  },
+  {
+    name: "Idurus Mohamed",
+    role: "Lead Dispatcher",
+    description: "Coordinates drivers and manages schedules to guarantee on-time deliveries.",
+    // image: idurusMohamedImg,
+  },
+  {
+    name: "Sumeya Mohamed",
+    role: "Customer Relations",
+    description: "Handles customer inquiries and ensures a positive experience for all clients.",
+    // image: sumeyaMohamedImg,
+  },
+];
 
 const AboutPage = () => {
   return (
