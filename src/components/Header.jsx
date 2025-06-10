@@ -1,45 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MobileMenu from './MobileMenu';
-import MenuToggle from './MenuToggle'; // Import the new animated icon
+import MenuToggle from './MenuToggle';
 import gmeLogo from '../assets/gme-logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Effect to prevent scrolling when menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    // Cleanup function
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
+  // We keep the toggle function for the click event (essential for touch devices)
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <>
-      <header
-        // --- DYNAMIC STYLING IS THE KEY HERE ---
-        className={`absolute top-0 left-0 w-full z-50 py-4 px-4 sm:px-8 flex items-center justify-between transition-colors duration-300 ${
-          isMenuOpen ? 'bg-white text-gray-900 shadow-md' : 'bg-transparent text-white'
-        }`}
-      >
-        <Link to="/" className="flex-shrink-0">
-          <img src={gmeLogo} alt="GME Solutions LLC Logo" className="h-16" />
-          <span className="sr-only">GME Solutions LLC</span>
-        </Link>
-        
-        {/* Use the new MenuToggle component */}
-        <MenuToggle toggle={() => setIsMenuOpen(!isMenuOpen)} isOpen={isMenuOpen} />
-      </header>
+    <header
+      className={`absolute top-0 left-0 w-full z-50 py-4 px-4 sm:px-8 flex items-center justify-between transition-colors duration-300 ${
+        isMenuOpen ? 'bg-white text-gray-900 shadow-md' : 'bg-transparent text-white'
+      }`}
+    >
+      <Link to="/" className="flex-shrink-0">
+        <img src={gmeLogo} alt="GME Solutions LLC Logo" className="h-16" />
+        <span className="sr-only">GME Solutions LLC</span>
+      </Link>
       
-      {/* The MobileMenu is now outside the header for cleaner layering */}
-      <MobileMenu isOpen={isMenuOpen} />
-    </>
+      {/* --- KEY CHANGE: Added hover events to this container --- */}
+      <div 
+        className="relative"
+        onMouseEnter={() => setIsMenuOpen(true)}
+        onMouseLeave={() => setIsMenuOpen(false)}
+      >
+        {/* The MenuToggle now uses the existing toggleMenu for its onClick */}
+        <MenuToggle toggle={toggleMenu} isOpen={isMenuOpen} />
+
+        {/* The MobileMenu will now appear on hover or click */}
+        <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      </div>
+    </header>
   );
 };
 
