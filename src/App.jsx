@@ -11,8 +11,6 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage'; // Import new page
 import FAQPage from './pages/FAQPage'; // <-- Import
 // import NotFoundPage from './pages/NotFoundPage'; // Optional: for 404 errors
 
-import './App.css'; 
-
 function App() {
   return (
     <Router>

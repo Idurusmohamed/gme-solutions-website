@@ -1,13 +1,17 @@
 // src/pages/ServicesPage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'; // [1]
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+
+// --- IMPORT YOUR IMAGE HERE ---
+import trucksAtGasStationImg from '../assets/trucks-at-gas-station.jpg'; // Make sure this path is correct
+// --- END IMAGE IMPORTS ---
 
 const ServicesPage = () => {
-  const position = [33.6934, -84.1443]; // Approx. coordinates for Lithonia, GA [1]
+  const position = [33.6934, -84.1443]; // Approx. coordinates for Lithonia, GA
 
   return (
-    <> {/* Use a fragment to wrap multiple top-level sections */}
+    <div className="bg-white">
       {/* Services Header and Main Content Section */}
       <section className="bg-gray-50 py-12 md:py-20 px-4">
         <div className="max-w-4xl mx-auto">
@@ -25,9 +29,10 @@ const ServicesPage = () => {
             <p className="text-gray-700 leading-relaxed mb-4">
               Our growing fleet of late-model trucks, paired with a responsive, real-time dispatch system, ensures cargo is delivered safely and punctually every time.
             </p>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed mb-6"> {/* Increased mb for image */}
               Whether you're transporting time-sensitive loads or bulk freight, our team is committed to performance, professionalism, and accountability on the road.
             </p>
+            <img src={trucksAtGasStationImg} alt="Trucks at Rest Stop" className="w-full h-auto object-cover rounded-lg shadow-md" /> {/* Image added */}
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-10">
@@ -57,7 +62,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Interactive Service Area Map Section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
             Serving the Entire United States
@@ -96,7 +101,7 @@ const ServicesPage = () => {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

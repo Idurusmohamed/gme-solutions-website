@@ -1,9 +1,10 @@
 /* src/index.css */
 @import "tailwindcss";
 
-/* These :root styles are often part of Vite's default template. */
-/* They set up some basic typography and color schemes. */
-/* Tailwind CSS also provides its own base styles (Preflight) and ways to manage themes. */
+/* These :root styles are often part of Vite's default template.
+   They set up some basic typography and color schemes.
+   Tailwind CSS also provides its own base styles (Preflight) and ways to manage themes.
+*/
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,62 +13,75 @@
   color-scheme: light dark; /* Informs the browser about supported color schemes */
   
   /* Default dark mode text and background (will apply if no other styles override for dark mode) */
-  color: rgba(255, 255, 255, 0.87); 
+  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-osx-font-smoothing: grayscale;
 }
 
 body {
   @apply bg-white; /* Tailwind utility to set a light background by default.
                      This overrides the background-color from :root for light mode.
                      For dark mode, you'd typically use Tailwind's dark: prefix on elements
-                     (e.g., dark:bg-gray-900) or configure dark mode in tailwind.config.js. */
-  margin: 0;      /* Good practice: removes default browser margins. */
+                     (e.g., dark:bg-gray-900) or configure dark mode in tailwind.config.js.
+                     */
+  margin: 0;      /* Good practice: removes default browser margins.
+                     */
   
   /* --- CRITICAL FIX: REMOVED THESE LINES --- */
-  /* display: flex; */
+  /* display: flex;
+                     */
   /* place-items: center; */
   /* --- END OF CRITICAL FIX --- */
   
   min-width: 320px; /* Ensures a minimum responsive width. */
-  min-height: 100vh; /* Ensures the body takes at least the full viewport height. */
+  min-height: 100vh; /* Ensures the body takes at least the full viewport height.
+                     */
   
   /* Font properties from :root will generally be inherited by the body, 
-     unless overridden by Tailwind's base styles or specific utility classes. */
+     unless overridden by Tailwind's base styles or specific utility classes.
+     */
 }
 
-/* The styles below are default Vite styles for common elements. */
-/* You can keep them as a very basic baseline, or remove them entirely and */
-/* style these elements explicitly with Tailwind CSS classes in your components */
-/* or by defining base styles using @layer base in this file for a more Tailwind-idiomatic approach. */
+/* The styles below are default Vite styles for common elements.
+   We are removing them because Tailwind CSS will now manage these styles
+   through utility classes applied directly in your React components.
+*/
 
+/* REMOVED default 'a' styles */
+/*
 a {
   font-weight: 500;
-  color: #646cff; /* Default link color (often for dark mode if :root color applies) */
-  text-decoration: inherit; /* Removes default underline, Tailwind can add it back with `underline` class */
+  color: #646cff;
+  text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2; /* Default link hover color */
+  color: #535bf2;
 }
+*/
 
+/* REMOVED default 'h1' styles */
+/*
 h1 {
-  font-size: 3.2em; /* Large default size for h1 */
+  font-size: 3.2em;
   line-height: 1.1;
 }
+*/
 
+/* REMOVED default 'button' styles */
+/*
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit; /* Inherits font from body/:root */
-  background-color: #1a1a1a; /* Default dark mode button background */
-  color: rgba(255, 255, 255, 0.87); /* Ensures button text is light on dark background */
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -78,20 +92,28 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+*/
 
-/* This media query provides default light mode styles if the browser prefers light mode. */
-/* Tailwind's own dark mode strategy (configured in tailwind.config.js) is often preferred for more control. */
+/* This media query provides default light mode styles if the browser prefers light mode.
+   Tailwind's own dark mode strategy (configured in tailwind.config.js) is often preferred for more control.
+*/
 @media (prefers-color-scheme: light) {
   :root {
     /* These will apply if the browser is in light mode and no more specific styles override them */
-    color: #213547; /* Default light mode text color */
-    background-color: #ffffff; /* Default light mode background (body @apply bg-white also sets this) */
+    color: #213547;
+    background-color: #ffffff;
   }
+  /* REMOVED light mode 'a:hover' style */
+  /*
   a:hover {
-    color: #747bff; /* Light mode link hover */
+    color: #747bff;
   }
+  */
+  /* REMOVED light mode 'button' style */
+  /*
   button {
-    background-color: #f9f9f9; /* Light mode button background */
-    color: #213547; /* Ensures button text is dark on light background */
+    background-color: #f9f9f9;
+    color: #213547;
   }
+  */
 }
