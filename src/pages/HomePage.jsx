@@ -17,9 +17,9 @@ import whiteTruckImg from '../assets/white-truck-trees.jpg'; // [1]
 const HomePage = () => {
   return (
     <div className="bg-white">
-      {/* Hero Section - Now full-screen and with background image */}
+      {/* Hero Section - Height adjusted to h-[85vh] */}
       <section 
-        className="relative bg-cover bg-center text-white py-20 md:py-32 px-4 min-h-screen flex items-center justify-center" 
+        className="relative bg-cover bg-center text-white py-20 md:py-32 px-4 h-[85vh] flex items-center justify-center" 
         style={{ backgroundImage: `url(${heroImage})` }} // [1]
       >
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay for text readability */}
