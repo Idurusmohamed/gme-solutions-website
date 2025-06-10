@@ -4,8 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import 'leaflet/dist/leaflet.css'; // <-- Add this line for Leaflet styles
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <App />
-  </React.StrictMode>,
+  </StrictMode>,
 )

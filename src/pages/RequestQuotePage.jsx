@@ -1,148 +1,159 @@
+// src/pages/RequestQuotePage.jsx
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const RequestQuotePage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = (data) => {
     console.log('Form Data Submitted:', data);
     // Here you would typically send the data to a backend server or email service
     alert('Quote request submitted! We will get back to you soon.');
-    // You might want to reset the form here: reset(); (import reset from useForm)
+    reset(); // Reset form fields after submission
   };
 
-  // Basic styling for error messages
-  const errorStyle = { color: 'red', fontSize: '0.9em', marginTop: '0.2em' };
-  const inputStyle = { display: 'block', width: '100%', padding: '0.5rem', marginTop: '0.3rem', marginBottom: '0.3rem', border: '1px solid #ccc', boxSizing: 'border-box' };
-  const labelStyle = { display: 'block', marginBottom: '0.8rem', fontWeight: 'bold' };
-
+  // Tailwind classes for common form elements
+  const inputClasses = "mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm";
+  const labelClasses = "block text-sm font-medium text-gray-700";
+  const errorClasses = "mt-1 text-xs text-red-600";
 
   return (
-    <div style={{ maxWidth: '600px', margin: '2rem auto', padding: '2rem', border: '1px solid #eee', borderRadius: '8px' }}>
-      <h2>Request A Quote</h2>
-      <p>Please fill out the form below, and we'll get back to you with a quote as soon as possible.</p>
-      
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Contact Information - Fields from your current site [3] and report */}
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="fullName" style={labelStyle}>Full Name*</label>
-          <input 
-            type="text" 
-            id="fullName"
-            style={inputStyle}
-            {...register('fullName', { required: 'Full Name is required.' })} 
-          />
-          {errors.fullName && <p style={errorStyle}>{errors.fullName.message}</p>}
-        </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="companyName" style={labelStyle}>Company Name*</label>
-          <input 
-            type="text" 
-            id="companyName"
-            style={inputStyle}
-            {...register('companyName', { required: 'Company Name is required.' })} 
-          />
-          {errors.companyName && <p style={errorStyle}>{errors.companyName.message}</p>}
-        </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="email" style={labelStyle}>Email Address*</label>
-          <input 
-            type="email" 
-            id="email"
-            style={inputStyle}
-            {...register('email', { 
-              required: 'Email is required.', 
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: 'Entered value does not match email format.'
-              } 
-            })} 
-          />
-          {errors.email && <p style={errorStyle}>{errors.email.message}</p>}
-        </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="phoneNumber" style={labelStyle}>Phone Number*</label>
-          <input 
-            type="tel" 
-            id="phoneNumber"
-            style={inputStyle}
-            {...register('phoneNumber', { required: 'Phone Number is required.' })} 
-          />
-          {errors.phoneNumber && <p style={errorStyle}>{errors.phoneNumber.message}</p>}
-        </div>
-
-        {/* Shipment Origin - Fields from your current site [3] and report */}
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="pickupLocation" style={labelStyle}>Pickup Location (City, State, Zip)*</label>
-          <input 
-            type="text" 
-            id="pickupLocation"
-            style={inputStyle}
-            {...register('pickupLocation', { required: 'Pickup Location is required.' })} 
-          />
-          {errors.pickupLocation && <p style={errorStyle}>{errors.pickupLocation.message}</p>}
-        </div>
-
-        {/* Shipment Destination - Fields from your current site [3] and report */}
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="deliveryLocation" style={labelStyle}>Delivery Location (City, State, Zip)*</label>
-          <input 
-            type="text" 
-            id="deliveryLocation"
-            style={inputStyle}
-            {...register('deliveryLocation', { required: 'Delivery Location is required.' })} 
-          />
-          {errors.deliveryLocation && <p style={errorStyle}>{errors.deliveryLocation.message}</p>}
-        </div>
+    <div className="bg-gray-50 py-12 md:py-20 px-4"> {/* Page background and padding */}
+      <div className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-lg"> {/* Form container with white background, padding, shadow */}
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-6">
+          Request A Quote
+        </h1>
+        <p className="text-center text-gray-600 mb-8">
+          Please fill out the form below, and we'll get back to you with a quote as soon as possible.
+        </p>
         
-        {/* Shipment Details - Fields from your current site [3] and report */}
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="freightDescription" style={labelStyle}>Freight Description*</label>
-          <textarea 
-            id="freightDescription"
-            style={{...inputStyle, minHeight: '80px'}}
-            {...register('freightDescription', { required: 'Freight Description is required.' })} 
-          />
-          {errors.freightDescription && <p style={errorStyle}>{errors.freightDescription.message}</p>}
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6"> {/* Tailwind for spacing between form groups */}
+          {/* Contact Information */}
+          <div>
+            <label htmlFor="fullName" className={labelClasses}>Full Name*</label>
+            <input 
+              type="text" 
+              id="fullName"
+              className={inputClasses}
+              {...register('fullName', { required: 'Full Name is required.' })} 
+            />
+            {errors.fullName && <p className={errorClasses}>{errors.fullName.message}</p>}
+          </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="weightDimensions" style={labelStyle}>Estimated Total Weight / Dimensions*</label>
-          <input 
-            type="text" 
-            id="weightDimensions"
-            style={inputStyle}
-            {...register('weightDimensions', { required: 'Weight/Dimensions are required.' })} 
-          />
-          {errors.weightDimensions && <p style={errorStyle}>{errors.weightDimensions.message}</p>}
-        </div>
+          <div>
+            <label htmlFor="companyName" className={labelClasses}>Company Name*</label>
+            <input 
+              type="text" 
+              id="companyName"
+              className={inputClasses}
+              {...register('companyName', { required: 'Company Name is required.' })} 
+            />
+            {errors.companyName && <p className={errorClasses}>{errors.companyName.message}</p>}
+          </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="preferredPickupDate" style={labelStyle}>Preferred Pickup Date</label>
-          <input 
-            type="date" 
-            id="preferredPickupDate"
-            style={inputStyle}
-            {...register('preferredPickupDate')} 
-          />
-        </div>
+          <div>
+            <label htmlFor="email" className={labelClasses}>Email Address*</label>
+            <input 
+              type="email" 
+              id="email"
+              className={inputClasses}
+              {...register('email', { 
+                required: 'Email is required.', 
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/, // More robust email regex
+                  message: 'Entered value does not match email format.'
+                } 
+              })} 
+            />
+            {errors.email && <p className={errorClasses}>{errors.email.message}</p>}
+          </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label htmlFor="specialHandling" style={labelStyle}>Special Handling Requirements (e.g., liftgate, fragile)</label>
-          <textarea 
-            id="specialHandling"
-            style={{...inputStyle, minHeight: '60px'}}
-            {...register('specialHandling')} 
-          />
-        </div>
-        
-        <button type="submit" style={{ padding: '0.8rem 1.5rem', fontSize: '1rem', cursor: 'pointer', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px' }}>
-          Submit Quote Request
-        </button>
-      </form>
+          <div>
+            <label htmlFor="phoneNumber" className={labelClasses}>Phone Number*</label>
+            <input 
+              type="tel" 
+              id="phoneNumber"
+              className={inputClasses}
+              {...register('phoneNumber', { required: 'Phone Number is required.' })} 
+            />
+            {errors.phoneNumber && <p className={errorClasses}>{errors.phoneNumber.message}</p>}
+          </div>
+
+          {/* Shipment Origin */}
+          <div>
+            <label htmlFor="pickupLocation" className={labelClasses}>Pickup Location (City, State, Zip)*</label>
+            <input 
+              type="text" 
+              id="pickupLocation"
+              className={inputClasses}
+              {...register('pickupLocation', { required: 'Pickup Location is required.' })} 
+            />
+            {errors.pickupLocation && <p className={errorClasses}>{errors.pickupLocation.message}</p>}
+          </div>
+
+          {/* Shipment Destination */}
+          <div>
+            <label htmlFor="deliveryLocation" className={labelClasses}>Delivery Location (City, State, Zip)*</label>
+            <input 
+              type="text" 
+              id="deliveryLocation"
+              className={inputClasses}
+              {...register('deliveryLocation', { required: 'Delivery Location is required.' })} 
+            />
+            {errors.deliveryLocation && <p className={errorClasses}>{errors.deliveryLocation.message}</p>}
+          </div>
+          
+          {/* Shipment Details */}
+          <div>
+            <label htmlFor="freightDescription" className={labelClasses}>Freight Description*</label>
+            <textarea 
+              id="freightDescription"
+              rows="3" // Added rows for better initial height
+              className={inputClasses}
+              {...register('freightDescription', { required: 'Freight Description is required.' })} 
+            ></textarea>
+            {errors.freightDescription && <p className={errorClasses}>{errors.freightDescription.message}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="weightDimensions" className={labelClasses}>Estimated Total Weight / Dimensions*</label>
+            <input 
+              type="text" 
+              id="weightDimensions"
+              className={inputClasses}
+              {...register('weightDimensions', { required: 'Weight/Dimensions are required.' })} 
+            />
+            {errors.weightDimensions && <p className={errorClasses}>{errors.weightDimensions.message}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="preferredPickupDate" className={labelClasses}>Preferred Pickup Date</label>
+            <input 
+              type="date" 
+              id="preferredPickupDate"
+              className={inputClasses}
+              {...register('preferredPickupDate')} 
+            />
+          </div>
+
+          <div>
+            <label htmlFor="specialHandling" className={labelClasses}>Special Handling Requirements (e.g., liftgate, fragile)</label>
+            <textarea 
+              id="specialHandling"
+              rows="2" // Added rows for better initial height
+              className={inputClasses}
+              {...register('specialHandling')} 
+            ></textarea>
+          </div>
+          
+          <button 
+            type="submit" 
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Submit Quote Request
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

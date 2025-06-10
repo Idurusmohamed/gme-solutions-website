@@ -1,6 +1,6 @@
-// src/pages/FAQPage.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FiChevronDown } from 'react-icons/fi'; // Using a cleaner icon
 
 const faqData = [
   {
@@ -25,18 +25,20 @@ const faqData = [
   },
 ];
 
-const FAQItem = ({ faq }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const FAQItem = ({ faq, index }) => {
+  const [isOpen, setIsOpen] = useState(index === 0); // Default first item to be open
 
   return (
-    <div className="border-b border-gray-200 py-4">
+    <div className="border-b border-gray-200"> {/* Use borders for separation instead of shadows for a cleaner look */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800"
+        className="w-full flex justify-between items-center text-left py-5 px-6"
       >
-        <span>{faq.question}</span>
+        <span className={`text-lg font-medium ${isOpen ? 'text-blue-600' : 'text-gray-800'} transition-colors duration-300`}>
+          {faq.question}
+        </span>
         <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-          <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+          <FiChevronDown className={`w-6 h-6 ${isOpen ? 'text-blue-600' : 'text-gray-500'}`} />
         </motion.span>
       </button>
       <AnimatePresence>
@@ -48,7 +50,7 @@ const FAQItem = ({ faq }) => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pt-2 pb-4 text-gray-600">
+            <p className="pb-5 pt-1 px-6 text-gray-600 leading-relaxed"> {/* Lighter text, more line-height */}
               {faq.answer}
             </p>
           </motion.div>
@@ -58,19 +60,21 @@ const FAQItem = ({ faq }) => {
   );
 };
 
-
 const FAQPage = () => {
   return (
-    <div className="bg-white py-12 md:py-20 px-4">
+    <div className="bg-white py-12 md:py-20 px-4"> {/* Changed to white for a seamless feel */}
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-700"> {/* Branded header color */}
             Frequently Asked Questions
           </h1>
+          <p className="text-lg text-gray-500 mt-4">
+            Have questions? We have answers. If you can't find what you're looking for, feel free to contact us.
+          </p>
         </div>
-        <div className="space-y-4">
+        <div className="bg-gray-50 rounded-lg border border-gray-200"> {/* Container for the FAQs */}
           {faqData.map((faq, index) => (
-            <FAQItem key={index} faq={faq} />
+            <FAQItem key={index} faq={faq} index={index} />
           ))}
         </div>
       </div>

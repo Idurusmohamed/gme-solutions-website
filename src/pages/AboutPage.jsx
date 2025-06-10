@@ -7,8 +7,32 @@ import React from 'react';
 // import idurusMohamedImg from '../assets/team/idurus-mohamed.jpg';
 // import sumeyaMohamedImg from '../assets/team/sumeya-mohamed.jpg';
 
-// Define the teamMembers array here, outside the component function
-const teamMembers = []
+const teamMembers = [
+  {
+    name: "Ahmed Hassan",
+    role: "Founder & CEO",
+    description: "Founded GME Solutions LLC in 2012 and leads the company with a vision for reliable and safe freight delivery.",
+    // image: ahmedHassanImg,
+  },
+  {
+    name: "Mahamad Bakhdad",
+    role: "Operations Lead",
+    description: "As the lead driver, Mahamad is the hands-on force ensuring your freight is transported safely and efficiently. He coordinates on-the-ground logistics to guarantee every delivery meets our high standards.",
+    // image: mahamadBakhdadImg,
+  },
+  {
+    name: "Idurus Mohamed",
+    role: "Technology Lead",
+    description: "Idurus architects and manages the company's entire technology landscape, from developing its website to overseeing our operational IT. He integrates robust cybersecurity measures into every system to ensure the complete safety and integrity of our company and client data.",
+    // image: idurusMohamedImg,
+  },
+  {
+    name: "Sumeya Mohamed",
+    role: "Client Services Manager",
+    description: "Sumeya is the friendly voice of GME. She masterfully handles client communications and dispatch coordination, ensuring a seamless and positive experience from initial inquiry to final delivery.",
+    // image: sumeyaMohamedImg,
+  },
+];
 
 const AboutPage = () => {
   return (
@@ -34,7 +58,7 @@ const AboutPage = () => {
               Originally Ramla Transport LLC, we rebranded to GME Solutions LLC in 2022 to better reflect our comprehensive services and commitment to excellence.
             </p>
           </div>
-          <div className="bg-blue-50 p-8 rounded-lg shadow-lg">
+          <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Values</h2>
             <ul className="list-disc list-inside text-gray-700 space-y-2 text-lg">
               <li><span className="font-semibold">Reliability:</span> Delivering your freight safely and on schedule.</li>
