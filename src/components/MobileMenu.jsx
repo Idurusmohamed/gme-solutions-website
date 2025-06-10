@@ -11,12 +11,16 @@ const navLinks = [
   { name: 'FAQ', path: '/faq' },
 ];
 
-const MobileMenu = ({ isOpen, onClose }) => {
+// The component now accepts the hover handlers as props
+const MobileMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="absolute top-16 right-4 z-50 w-64 origin-top-right rounded-md bg-white py-2 shadow-xl ring-1 ring-black ring-opacity-5"
+          // We apply the hover handlers to the menu panel itself
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className="absolute top-14 right-0 z-50 w-64 origin-top-right rounded-md bg-white py-2 shadow-xl ring-1 ring-black ring-opacity-5"
           initial={{ opacity: 0, scale: 0.95, y: -10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -10 }}
@@ -31,9 +35,8 @@ const MobileMenu = ({ isOpen, onClose }) => {
                     onClick={onClose}
                     className={({ isActive }) =>
                       `block w-full text-left px-3 py-2 text-base rounded-md transition-colors duration-200 ${
-                        // --- THIS IS THE KEY STYLE CHANGE ---
                         isActive
-                          ? 'font-semibold text-blue-600 bg-blue-50' // Subtle, light blue background with bold, blue text
+                          ? 'font-semibold text-blue-600 bg-blue-50'
                           : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                       }`
                     }
