@@ -7,14 +7,14 @@ import Footer from './Footer';
 
 const Layout = () => {
   return (
-    // This div is the main wrapper. If it needs a default background for areas
-    // not covered by section-specific backgrounds, apply it here.
-    // However, usually, the body style in index.css or section backgrounds handle this.
-    <div className="flex flex-col min-h-screen"> {/* Ensures footer stays at bottom */}
+    // This div wraps the entire layout. No width constraints here.
+    <div className="flex flex-col min-h-screen"> 
       <Header />
+      {/* Navigation is still sticky, but will appear below the absolute header on the homepage.
+          For other pages, it will be at the top. */}
       <Navigation />
       {/* The main content area. Page sections should define their own full-width backgrounds. */}
-      <main className="flex-grow"> {/* flex-grow allows main to take available space */}
+      <main className="flex-grow"> 
         <Outlet /> 
       </main>
       <Footer />
