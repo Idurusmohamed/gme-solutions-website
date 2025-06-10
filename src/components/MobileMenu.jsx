@@ -2,78 +2,60 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Our Services', path: '/services' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Request A Quote', path: '/quote' },
-  { name: 'Contact Us', path: '/contact' },
-  { name: 'FAQ', path: '/faq' },
-];
-
-// Animation variants for the container to orchestrate staggered animation
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08, // Each child will animate 0.08s after the previous one
-      ease: 'easeOut',
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1, // Reverse the stagger on exit
-    },
-  },
+// Organize links into categories, like the Swift example
+const menuSections = {
+  'Company': [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+  ],
+  'Services': [
+    { name: 'Our Services', path: '/services' },
+    { name: 'Request A Quote', path: '/quote' },
+  ],
+  'Support': [
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'FAQ', path: '/faq' },
+  ]
 };
 
-// Animation variants for each individual link item
-const itemVariants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: 20 },
-};
-
-const MobileMenu = ({ isOpen, onClose }) => {
+const MobileMenu = ({ isOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          // This is the main panel for the "frosted glass" look
-          className="absolute top-16 right-4 z-50 w-64 origin-top-right rounded-xl border border-white/10 bg-black/20 py-2 shadow-2xl backdrop-blur-lg"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
+          className="fixed top-24 left-0 w-full bg-white z-40 overflow-y-auto"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <motion.ul
-            // Apply variants to the list container
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {navLinks.map((link) => (
-              <motion.li key={link.name} variants={itemVariants}>
-                <NavLink
-                  to={link.path}
-                  onClick={onClose}
-                  className={({ isActive }) =>
-                    `block w-full px-4 py-2.5 text-base font-medium transition-colors duration-200 ${
-                      isActive
-                        ? 'text-white' // Active link is bright white
-                        : 'text-gray-300 hover:text-white' // Inactive links are slightly dimmer
-                    }`
-                  }
-                >
-                  {link.name}
-                </NavLink>
-              </motion.li>
-            ))}
-          </motion.ul>
+          <div className="max-w-7xl mx-auto py-10 px-8">
+            <nav className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
+              {Object.entries(menuSections).map(([sectionTitle, links]) => (
+                <div key={sectionTitle} className="space-y-4">
+                  <h2 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">
+                    {sectionTitle}
+                  </h2>
+                  <ul className="space-y-3">
+                    {links.map((link) => (
+                      <li key={link.name}>
+                        <NavLink
+                          to={link.path}
+                          className={({ isActive }) => 
+                            `text-gray-600 hover:text-blue-600 transition-colors duration-200 ${
+                              isActive ? '!text-blue-600 font-medium' : ''
+                            }`
+                          }
+                        >
+                          {link.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </nav>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
