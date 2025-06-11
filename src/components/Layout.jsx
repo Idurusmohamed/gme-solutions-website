@@ -1,24 +1,31 @@
-import { Outlet, ScrollRestoration } from 'react-router-dom';
-import { SpeedInsights } from "@vercel/speed-insights/react"; // <-- 1. Import the new component
+import React from 'react';
+// 1. Import Outlet, ScrollRestoration, and now useLocation
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom'; 
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = () => {
+  // 2. Get the current page's location information
+  const location = useLocation();
+  // Check if the current page is the homepage
+  const isHomePage = location.pathname === '/';
+
   return (
-    // Your important flexbox container is preserved
+    // Your existing flexbox structure is preserved
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      {/* Your flex-grow main element is preserved */}
-      <main className="flex-grow">
+      {/* 3. The <main> element now has a DYNAMIC className */}
+      {/* It adds top padding to every page EXCEPT the homepage */}
+      <main className={`flex-grow ${isHomePage ? '' : 'pt-24 md:pt-28'}`}>
         <Outlet />
       </main>
       
       <Footer />
       
-      {/* All functional components are placed here at the end */}
       <ScrollRestoration />
-      <SpeedInsights /> {/* <-- 2. Add the Speed Insights component here */}
+      <SpeedInsights />
     </div>
   );
 };
