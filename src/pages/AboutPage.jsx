@@ -119,7 +119,7 @@ const AboutPage = () => {
                     <div className="md:flex items-center md:justify-start">
                       <div className="md:w-1/2 md:pr-8">
                         <div className="bg-gray-50 p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
-                          <p className="text-sm font-semibold text-blue-600 mb-1">2022</p>
+                          <p className="text-sm font-semibold text-blue-600 mb-1">2020</p>
                           <h3 className="text-xl font-bold text-gray-800 mb-2">A New Identity</h3>
                           <p className="text-gray-600 leading-relaxed">We rebranded to GME Solutions LLC to better reflect our comprehensive services and unwavering commitment to excellence.</p>
                         </div>
