@@ -9,11 +9,13 @@ import RequestQuotePage from './pages/RequestQuotePage';
 import ContactPage from './pages/ContactPage';   // Import new page
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'; // Import new page
 import FAQPage from './pages/FAQPage'; // <-- Import
-// import NotFoundPage from './pages/NotFoundPage'; // Optional: for 404 errors
+import ScrollToTop from './components/ScrollToTop'; // <-- 1. IMPORT THE NEW COMPONENT
+//import NotFoundPage from './pages/NotFoundPage'; // Optional: for 404 errors
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* <-- 2. PLACE IT HERE, right inside the Router */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

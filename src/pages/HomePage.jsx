@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedNumber from '../components/AnimatedNumber';
 import { motion } from 'framer-motion';
+import { FaCalendarAlt, FaMapMarkedAlt, FaShieldAlt, FaHeadset } from 'react-icons/fa'; // Icons for the stats
 
 // --- IMPORT YOUR IMAGES HERE ---
 import heroImage from '../assets/hero-truck.jpg'; // [1]
@@ -81,44 +82,78 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* NEW: Animated Statistics Section */}
-      <section className="py-16 lg:py-24 bg-gray-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">GME Solutions LLC By The Numbers</h2>
-            <p className="mt-4 text-lg text-gray-300">Our commitment to excellence, quantified.</p>
-          </div>
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Statistic 1 */}
-            <div className="bg-gray-700 p-8 rounded-lg">
-              <span className="text-5xl font-extrabold text-yellow-400">
-                <AnimatedNumber value={12} />+
-              </span>
-              <p className="mt-2 text-lg text-gray-300">Years in Business</p>
-            </div>
-            {/* Statistic 2 */}
-            <div className="bg-gray-700 p-8 rounded-lg">
-              <span className="text-5xl font-extrabold text-yellow-400">
-                <AnimatedNumber value={4} />
-              </span>
-              <p className="mt-2 text-lg text-gray-300">Power Units in Fleet</p>
-            </div>
-            {/* Statistic 3 */}
-            <div className="bg-gray-700 p-8 rounded-lg">
-              <span className="text-5xl font-extrabold text-yellow-400">
-                <AnimatedNumber value={100} />%
-              </span>
-              <p className="mt-2 text-lg text-gray-300">On-Time Delivery Focus</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+// --- NEW ANIMATED STATISTICS SECTION ---
+<section className="py-16 lg:py-24 bg-gray-800 text-white">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold">GME Solutions By The Numbers</h2>
+      <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        Our commitment to excellence, quantified by years of reliable service and a dedication to our clients.
+      </p>
+    </div>
+    
+    {/* Staggered animation container */}
+    <motion.div 
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ staggerChildren: 0.2 }} // Each child card will animate 0.2s after the previous one
+    >
+      {/* Stat 1: Years in Business */}
+      <motion.div
+        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+        transition={{ duration: 0.5 }}
+      >
+        <FaCalendarAlt className="text-4xl text-yellow-400 mb-4" />
+        <span className="text-5xl font-extrabold text-white">
+          <AnimatedNumber value={12} />+
+        </span>
+        <p className="mt-2 text-lg text-gray-300">Years in Business</p>
+      </motion.div>
+
+      {/* Stat 2: States Served */}
+      <motion.div
+        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+        transition={{ duration: 0.5 }}
+      >
+        <FaMapMarkedAlt className="text-4xl text-yellow-400 mb-4" />
+        <span className="text-5xl font-extrabold text-white">
+          <AnimatedNumber value={48} />
+        </span>
+        <p className="mt-2 text-lg text-gray-300">States Served</p>
+      </motion.div>
+
+      {/* Stat 3: Commitment to Safety */}
+      <motion.div
+        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+        transition={{ duration: 0.5 }}
+      >
+        <FaShieldAlt className="text-4xl text-yellow-400 mb-4" />
+        <span className="text-5xl font-extrabold text-white">
+          <AnimatedNumber value={100} />%
+        </span>
+        <p className="mt-2 text-lg text-gray-300">Commitment to Safety</p>
+      </motion.div>
+
+      {/* Stat 4: 24/7 Dispatch */}
+      <motion.div
+        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+        transition={{ duration: 0.5 }}
+      >
+        <FaHeadset className="text-4xl text-yellow-400 mb-4" />
+        <span className="text-5xl font-extrabold text-white">
+          24/7
+        </span>
+        <p className="mt-2 text-lg text-gray-300">Dispatch Availability</p>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
 
       {/* Mission & About GME Snippet - REFINED for consistent background */}
       <section className="py-16 lg:py-24 bg-white"> {/* Entire section is bg-white */}
