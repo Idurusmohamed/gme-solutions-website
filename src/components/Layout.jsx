@@ -1,6 +1,6 @@
 // src/components/Layout.jsx
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Header from './Header';
 // import Navigation from './Navigation'; // REMOVE THIS IMPORT
 import Footer from './Footer';
@@ -14,6 +14,10 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      {/* 2. Add this component here. It listens for navigation events 
+           and automatically scrolls the new page to the top.
+      */}
+      <ScrollRestoration />
     </div>
   );
 };
