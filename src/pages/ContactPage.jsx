@@ -78,8 +78,7 @@ const ContactPage = () => {
                 <p><strong className="font-medium">Phone:</strong> <a href="tel:+16785106050" className="text-blue-600 hover:underline">+1 678 510 6050</a></p>
                 <p><strong className="font-medium">Email:</strong> <a href="mailto:Ahmed@gmesolutionsllc.com" className="text-blue-600 hover:underline">Ahmed@gmesolutionsllc.com</a></p>
                 <p>
-                  <strong className="font-medium">Address:</strong><br />
-                  1243 Huntington place circle,<br />
+                  <strong className="font-medium">Location:</strong><br />
                   Lithonia GA, 30058, United States
                 </p>
               </div>

@@ -54,7 +54,7 @@ const Footer = () => {
               </a>
             </p>
             <p className="text-sm">
-              Address: 1243 Huntington place circle, <br />Lithonia GA, 30058
+              Lithonia GA, 30058
             </p>
           </div>
         </div>
