@@ -46,7 +46,7 @@ const RequestQuotePage = () => {
   };
 
   const onSubmit = (data) => {
-    {/*console.log('Form Data Submitted:', data);*/} // For debugging, you can log the data to the console
+    {/*console.log('Form Data Submitted:', data);*/ } // For debugging, you can log the data to the console
     // Here you would typically send the data to your backend or an API endpoint
     alert('Quote request submitted! We will get back to you soon.');
     setIsSubmitted(true); // <-- 2. Show success screen instead of resetting immediately
@@ -91,73 +91,73 @@ const RequestQuotePage = () => {
             </div>
             {/* Form Steps... (rest of the form code is the same) */}
             <form onSubmit={handleSubmit(onSubmit)}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentStep}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3 }}
-            >
-              {currentStep === 0 && (
-                <section className="space-y-5">
-                  <h2 className="text-xl font-semibold text-gray-800">1. Contact Information</h2>
-                  <FormInput icon={<FaUser className="text-gray-400" />} id="fullName" type="text" placeholder="Full Name*" register={register} error={errors.fullName} validation={{ required: 'Full Name is required.' }} />
-                  <FormInput icon={<FaBuilding className="text-gray-400" />} id="companyName" type="text" placeholder="Company Name*" register={register} error={errors.companyName} validation={{ required: 'Company Name is required.' }} />
-                  <FormInput icon={<FaEnvelope className="text-gray-400" />} id="email" type="email" placeholder="Email Address*" register={register} error={errors.email} validation={{ required: 'Email is required.', pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email format.' } }} />
-                  <FormInput icon={<FaPhone className="text-gray-400" />} id="phoneNumber" type="tel" placeholder="Phone Number*" register={register} error={errors.phoneNumber} validation={{ required: 'Phone Number is required.' }} />
-                </section>
-              )}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {currentStep === 0 && (
+                    <section className="space-y-5">
+                      <h2 className="text-xl font-semibold text-gray-800">1. Contact Information</h2>
+                      <FormInput icon={<FaUser className="text-gray-400" />} id="fullName" type="text" placeholder="Full Name*" register={register} error={errors.fullName} validation={{ required: 'Full Name is required.' }} />
+                      <FormInput icon={<FaBuilding className="text-gray-400" />} id="companyName" type="text" placeholder="Company Name*" register={register} error={errors.companyName} validation={{ required: 'Company Name is required.' }} />
+                      <FormInput icon={<FaEnvelope className="text-gray-400" />} id="email" type="email" placeholder="Email Address*" register={register} error={errors.email} validation={{ required: 'Email is required.', pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email format.' } }} />
+                      <FormInput icon={<FaPhone className="text-gray-400" />} id="phoneNumber" type="tel" placeholder="Phone Number*" register={register} error={errors.phoneNumber} validation={{ required: 'Phone Number is required.' }} />
+                    </section>
+                  )}
 
-              {currentStep === 1 && (
-                <section className="space-y-5">
-                  <h2 className="text-xl font-semibold text-gray-800">2. Shipment Details</h2>
-                  <FormInput icon={<FaMapMarkerAlt className="text-gray-400" />} id="pickupLocation" type="text" placeholder="Pickup Location (City, State, Zip)*" register={register} error={errors.pickupLocation} validation={{ required: 'Pickup Location is required.' }} />
-                  <FormInput icon={<FaMapMarkerAlt className="text-gray-400" />} id="deliveryLocation" type="text" placeholder="Delivery Location (City, State, Zip)*" register={register} error={errors.deliveryLocation} validation={{ required: 'Delivery Location is required.' }} />
-                  <FormInput icon={<FaBoxOpen className="text-gray-400" />} id="freightDescription" type="text" placeholder="Freight Description*" register={register} error={errors.freightDescription} validation={{ required: 'Freight Description is required.' }} />
-                  <FormInput icon={<FaWeightHanging className="text-gray-400" />} id="weightDimensions" type="text" placeholder="Estimated Weight / Dimensions*" register={register} error={errors.weightDimensions} validation={{ required: 'Weight/Dimensions are required.' }} />
-                </section>
-              )}
+                  {currentStep === 1 && (
+                    <section className="space-y-5">
+                      <h2 className="text-xl font-semibold text-gray-800">2. Shipment Details</h2>
+                      <FormInput icon={<FaMapMarkerAlt className="text-gray-400" />} id="pickupLocation" type="text" placeholder="Pickup Location (City, State, Zip)*" register={register} error={errors.pickupLocation} validation={{ required: 'Pickup Location is required.' }} />
+                      <FormInput icon={<FaMapMarkerAlt className="text-gray-400" />} id="deliveryLocation" type="text" placeholder="Delivery Location (City, State, Zip)*" register={register} error={errors.deliveryLocation} validation={{ required: 'Delivery Location is required.' }} />
+                      <FormInput icon={<FaBoxOpen className="text-gray-400" />} id="freightDescription" type="text" placeholder="Freight Description*" register={register} error={errors.freightDescription} validation={{ required: 'Freight Description is required.' }} />
+                      <FormInput icon={<FaWeightHanging className="text-gray-400" />} id="weightDimensions" type="text" placeholder="Estimated Weight / Dimensions*" register={register} error={errors.weightDimensions} validation={{ required: 'Weight/Dimensions are required.' }} />
+                    </section>
+                  )}
 
-              {currentStep === 2 && (
-                <section className="space-y-5">
-                  <h2 className="text-xl font-semibold text-gray-800">3. Final Details</h2>
-                  <FormInput icon={<FaCalendarAlt className="text-gray-400" />} id="preferredPickupDate" type="date" placeholder="Preferred Pickup Date" register={register} error={errors.preferredPickupDate} />
-                  <FormInput icon={<FaStar className="text-gray-400" />} id="specialHandling" type="text" placeholder="Special Handling Requirements" register={register} error={errors.specialHandling} />
-                </section>
-              )}
-            </motion.div>
-          </AnimatePresence>
+                  {currentStep === 2 && (
+                    <section className="space-y-5">
+                      <h2 className="text-xl font-semibold text-gray-800">3. Final Details</h2>
+                      <FormInput icon={<FaCalendarAlt className="text-gray-400" />} id="preferredPickupDate" type="date" placeholder="Preferred Pickup Date" register={register} error={errors.preferredPickupDate} />
+                      <FormInput icon={<FaStar className="text-gray-400" />} id="specialHandling" type="text" placeholder="Special Handling Requirements" register={register} error={errors.specialHandling} />
+                    </section>
+                  )}
+                </motion.div>
+              </AnimatePresence>
 
-          {/* Navigation Buttons */}
-          <div className="mt-8 flex justify-between">
-            <button
-              type="button"
-              onClick={handlePrev}
-              className={`px-6 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md shadow-sm hover:bg-gray-300 transition-opacity duration-300 ${currentStep === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-              disabled={currentStep === 0}
-            >
-              Previous
-            </button>
-            {currentStep < steps.length - 1 && (
-              <button
-                type="button"
-                onClick={handleNext}
-                className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300"
-              >
-                Next Step
-              </button>
-            )}
-            {currentStep === steps.length - 1 && (
-              <button
-                type="submit"
-                className="px-6 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 transition-colors duration-300"
-              >
-                Submit Quote Request
-              </button>
-            )}
-          </div>
-        </form>
+              {/* Navigation Buttons */}
+              <div className="mt-8 flex justify-between">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className={`px-6 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md shadow-sm hover:bg-gray-300 transition-opacity duration-300 ${currentStep === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={currentStep === 0}
+                >
+                  Previous
+                </button>
+                {currentStep < steps.length - 1 && (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    Next Step
+                  </button>
+                )}
+                {currentStep === steps.length - 1 && (
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 transition-colors duration-300"
+                  >
+                    Submit Quote Request
+                  </button>
+                )}
+              </div>
+            </form>
           </>
         )}
       </div>

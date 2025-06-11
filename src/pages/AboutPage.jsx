@@ -27,26 +27,26 @@ const teamMembers = [
 
 // Data for the Values section
 const values = [
-    { 
-        icon: <FaHandshake className="text-4xl text-blue-600" />,
-        name: "Reliability",
-        description: "Delivering your freight safely and on schedule, every time."
-    },
-    { 
-        icon: <FaShieldAlt className="text-4xl text-blue-600" />,
-        name: "Safety",
-        description: "Prioritizing the safety of our drivers, your cargo, and the public."
-    },
-    { 
-        icon: <FaUsers className="text-4xl text-blue-600" />,
-        name: "Customer Focus",
-        description: "Understanding and meeting your unique shipping needs."
-    },
-    { 
-        icon: <FaRegEye className="text-4xl text-blue-600" />,
-        name: "Transparency",
-        description: "Clear communication and honest practices in all our dealings."
-    },
+  {
+    icon: <FaHandshake className="text-4xl text-blue-600" />,
+    name: "Reliability",
+    description: "Delivering your freight safely and on schedule, every time."
+  },
+  {
+    icon: <FaShieldAlt className="text-4xl text-blue-600" />,
+    name: "Safety",
+    description: "Prioritizing the safety of our drivers, your cargo, and the public."
+  },
+  {
+    icon: <FaUsers className="text-4xl text-blue-600" />,
+    name: "Customer Focus",
+    description: "Understanding and meeting your unique shipping needs."
+  },
+  {
+    icon: <FaRegEye className="text-4xl text-blue-600" />,
+    name: "Transparency",
+    description: "Clear communication and honest practices in all our dealings."
+  },
 ];
 
 // Animation variants for the team section grid
@@ -80,7 +80,7 @@ const AboutPage = () => {
           </header>
 
           {/* "OUR STORY" SECTION WITH VISUAL TIMELINE */}
-          <motion.section 
+          <motion.section
             className="py-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -149,8 +149,8 @@ const AboutPage = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-12">Our Core Values</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {values.map((value, index) => (
-                  <motion.div 
-                    key={value.name} 
+                  <motion.div
+                    key={value.name}
                     className="text-center p-6"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -170,9 +170,9 @@ const AboutPage = () => {
 
           {/* --- MEET THE TEAM SECTION (NOW ANIMATED) --- */}
           <section className="pt-16 lg:pt-24">
-            <motion.h2 
+            <motion.h2
               className="text-3xl font-bold text-center text-gray-800 mb-10"
-              initial={{ opacity: 0, y:20 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -181,7 +181,7 @@ const AboutPage = () => {
             </motion.h2>
 
             {/* This container orchestrates the staggered animation */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
               variants={gridContainerVariants}
               initial="hidden"
@@ -190,8 +190,8 @@ const AboutPage = () => {
             >
               {teamMembers.map((member) => (
                 // Each card is now a motion.div with its own animation variant
-                <motion.div 
-                  key={member.name} 
+                <motion.div
+                  key={member.name}
                   className="bg-white p-6 rounded-xl shadow-xl text-center transform hover:scale-105 transition-transform duration-300"
                   variants={cardVariants}
                 >

@@ -34,22 +34,22 @@ const termlyPolicyHtml = `
 
 // Data for the sticky Table of Contents
 const tableOfContents = [
-    { href: "#toc", title: "Table of Contents" },
-    { href: "#infocollect", title: "1. Information We Collect" },
-    { href: "#infouse", title: "2. How We Process Information" },
-    { href: "#whoshare", title: "4. Information Sharing" },
-    { href: "#cookies", title: "5. Cookies & Tracking" },
-    { href: "#privacyrights", title: "10. Your Privacy Rights" },
-    { href: "#uslaws", title: "12. U.S. Residents' Rights" },
-    { href: "#policyupdates", title: "15. Updates to This Notice" },
-    { href: "#contact", title: "16. How to Contact Us" },
+  { href: "#toc", title: "Table of Contents" },
+  { href: "#infocollect", title: "1. Information We Collect" },
+  { href: "#infouse", title: "2. How We Process Information" },
+  { href: "#whoshare", title: "4. Information Sharing" },
+  { href: "#cookies", title: "5. Cookies & Tracking" },
+  { href: "#privacyrights", title: "10. Your Privacy Rights" },
+  { href: "#uslaws", title: "12. U.S. Residents' Rights" },
+  { href: "#policyupdates", title: "15. Updates to This Notice" },
+  { href: "#contact", title: "16. How to Contact Us" },
 ];
 
 const PrivacyPolicyPage = () => {
   return (
     <div className="bg-gray-50 py-12 md:py-20">
       <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-4 lg:gap-12">
-        
+
         {/* Left Column: Sticky Table of Contents */}
         <aside className="hidden lg:block lg:col-span-1">
           <div className="sticky top-28">
@@ -58,8 +58,8 @@ const PrivacyPolicyPage = () => {
               <ul className="space-y-2">
                 {tableOfContents.map((item) => (
                   <li key={item.href}>
-                    <a 
-                      href={item.href} 
+                    <a
+                      href={item.href}
                       className="text-gray-600 hover:text-blue-600 hover:underline transition-colors duration-200 text-sm"
                     >
                       {item.title}
@@ -72,7 +72,7 @@ const PrivacyPolicyPage = () => {
         </aside>
 
         {/* Right Column: Policy Content */}
-        <motion.div 
+        <motion.div
           className="lg:col-span-3 bg-white p-8 md:p-12 rounded-xl shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

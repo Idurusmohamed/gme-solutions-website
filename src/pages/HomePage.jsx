@@ -19,8 +19,8 @@ const HomePage = () => {
   return (
     <div className="bg-white">
       {/* Hero Section - Height adjusted to h-[85vh] */}
-      <section 
-        className="relative bg-cover bg-center text-white py-20 md:py-32 px-4 h-[85vh] flex items-center justify-center" 
+      <section
+        className="relative bg-cover bg-center text-white py-20 md:py-32 px-4 h-[85vh] flex items-center justify-center"
         style={{ backgroundImage: `url(${heroImage})` }} // [1]
       >
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay for text readability */}
@@ -73,8 +73,8 @@ const HomePage = () => {
               <p className="text-gray-600 text-sm">Competitive pay, a safety-first culture, and dedicated support for our drivers.</p>
             </div>
           </div>
-          <Link 
-            to="/services" 
+          <Link
+            to="/services"
             className="mt-12 inline-block text-blue-600 hover:text-blue-800 font-semibold hover:underline transition-colors duration-300"
           >
             Learn More About Our Services &rarr;
@@ -83,77 +83,77 @@ const HomePage = () => {
       </section>
 
 // --- NEW ANIMATED STATISTICS SECTION ---
-<section className="py-16 lg:py-24 bg-gray-800 text-white">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold">GME Solutions By The Numbers</h2>
-      <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-        Our commitment to excellence, quantified by years of reliable service and a dedication to our clients.
-      </p>
-    </div>
-    
-    {/* Staggered animation container */}
-    <motion.div 
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ staggerChildren: 0.2 }} // Each child card will animate 0.2s after the previous one
-    >
-      {/* Stat 1: Years in Business */}
-      <motion.div
-        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
-        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.5 }}
-      >
-        <FaCalendarAlt className="text-4xl text-yellow-400 mb-4" />
-        <span className="text-5xl font-extrabold text-white">
-          <AnimatedNumber value={12} />+
-        </span>
-        <p className="mt-2 text-lg text-gray-300">Years in Business</p>
-      </motion.div>
+      <section className="py-16 lg:py-24 bg-gray-800 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold">GME Solutions By The Numbers</h2>
+            <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+              Our commitment to excellence, quantified by years of reliable service and a dedication to our clients.
+            </p>
+          </div>
 
-      {/* Stat 2: States Served */}
-      <motion.div
-        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
-        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.5 }}
-      >
-        <FaMapMarkedAlt className="text-4xl text-yellow-400 mb-4" />
-        <span className="text-5xl font-extrabold text-white">
-          <AnimatedNumber value={48} />
-        </span>
-        <p className="mt-2 text-lg text-gray-300">States Served</p>
-      </motion.div>
+          {/* Staggered animation container */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ staggerChildren: 0.2 }} // Each child card will animate 0.2s after the previous one
+          >
+            {/* Stat 1: Years in Business */}
+            <motion.div
+              className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaCalendarAlt className="text-4xl text-yellow-400 mb-4" />
+              <span className="text-5xl font-extrabold text-white">
+                <AnimatedNumber value={12} />+
+              </span>
+              <p className="mt-2 text-lg text-gray-300">Years in Business</p>
+            </motion.div>
 
-      {/* Stat 3: Commitment to Safety */}
-      <motion.div
-        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
-        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.5 }}
-      >
-        <FaShieldAlt className="text-4xl text-yellow-400 mb-4" />
-        <span className="text-5xl font-extrabold text-white">
-          <AnimatedNumber value={100} />%
-        </span>
-        <p className="mt-2 text-lg text-gray-300">Commitment to Safety</p>
-      </motion.div>
+            {/* Stat 2: States Served */}
+            <motion.div
+              className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaMapMarkedAlt className="text-4xl text-yellow-400 mb-4" />
+              <span className="text-5xl font-extrabold text-white">
+                <AnimatedNumber value={48} />
+              </span>
+              <p className="mt-2 text-lg text-gray-300">States Served</p>
+            </motion.div>
 
-      {/* Stat 4: 24/7 Dispatch */}
-      <motion.div
-        className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
-        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.5 }}
-      >
-        <FaHeadset className="text-4xl text-yellow-400 mb-4" />
-        <span className="text-5xl font-extrabold text-white">
-          24/7
-        </span>
-        <p className="mt-2 text-lg text-gray-300">Dispatch Availability</p>
-      </motion.div>
-    </motion.div>
-  </div>
-</section>
+            {/* Stat 3: Commitment to Safety */}
+            <motion.div
+              className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaShieldAlt className="text-4xl text-yellow-400 mb-4" />
+              <span className="text-5xl font-extrabold text-white">
+                <AnimatedNumber value={100} />%
+              </span>
+              <p className="mt-2 text-lg text-gray-300">Commitment to Safety</p>
+            </motion.div>
+
+            {/* Stat 4: 24/7 Dispatch */}
+            <motion.div
+              className="bg-gray-700/50 p-6 rounded-lg text-center flex flex-col items-center"
+              variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaHeadset className="text-4xl text-yellow-400 mb-4" />
+              <span className="text-5xl font-extrabold text-white">
+                24/7
+              </span>
+              <p className="mt-2 text-lg text-gray-300">Dispatch Availability</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Mission & About GME Snippet - REFINED for consistent background */}
       <section className="py-16 lg:py-24 bg-white"> {/* Entire section is bg-white */}
@@ -175,13 +175,13 @@ const HomePage = () => {
             <img src={whiteTruckImg} alt="White Truck with Trees" className="w-full h-auto object-cover rounded-lg shadow-md" /> {/* [1] */}
           </div>
           {/* About GME Content */}
-          <div className="p-8 rounded-lg"> 
+          <div className="p-8 rounded-lg">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">ABOUT GME</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               Founded as Ramla Transport LLC in 2012 and rebranded to GME Solutions LLC in 2022. GME is a freight carrier based in Lithonia, GA, where we combine personalized dispatch service with national scale reliability.
             </p>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className="text-blue-600 hover:text-blue-800 font-semibold hover:underline transition-colors duration-300"
             >
               More About Us &rarr;

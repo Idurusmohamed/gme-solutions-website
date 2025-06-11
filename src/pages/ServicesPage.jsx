@@ -50,7 +50,7 @@ const ServicesPage = () => {
       <section className="relative h-[50vh] bg-cover bg-center text-white" style={{ backgroundImage: `url(${servicesHeroImg})` }}>
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative h-full flex flex-col justify-center items-center text-center px-4">
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-6xl font-extrabold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ const ServicesPage = () => {
           >
             Our Services
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-lg md:text-xl mt-4 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ const ServicesPage = () => {
       </section>
 
       {/* 2. Our Specialization Section */}
-      <motion.section 
+      <motion.section
         className="py-16 lg:py-24"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
