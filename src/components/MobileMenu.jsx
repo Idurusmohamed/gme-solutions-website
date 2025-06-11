@@ -33,10 +33,9 @@ const MobileMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
                     to={link.path}
                     onClick={onClose}
                     className={({ isActive }) =>
-                      `block w-full text-left px-3 py-2 text-base rounded-md transition-colors duration-200 ${
-                        isActive
-                          ? 'font-semibold text-blue-600 bg-blue-50'
-                          : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                      `block w-full text-left px-3 py-2 text-base rounded-md transition-colors duration-200 ${isActive
+                        ? 'font-semibold text-blue-600 bg-blue-50'
+                        : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                       }`
                     }
                   >

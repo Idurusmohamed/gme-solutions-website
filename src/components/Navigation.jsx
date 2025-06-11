@@ -10,49 +10,49 @@ const Navigation = () => {
     <nav className="bg-gray-200 shadow-md sticky top-0 z-50"> {/* Slightly different background, shadow, sticky [1] */}
       <ul className="max-w-6xl mx-auto flex flex-wrap justify-center items-center list-none p-2 md:p-0"> {/* Centered, responsive padding [1] */}
         <li>
-          <NavLink 
-            to="/" 
-            className={({ isActive }) => isActive? `${linkClasses} ${activeLinkClasses}` : linkClasses}
+          <NavLink
+            to="/"
+            className={({ isActive }) => isActive ? `${linkClasses} ${activeLinkClasses}` : linkClasses}
           >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink 
-            to="/services" 
-            className={({ isActive }) => isActive? `${linkClasses} ${activeLinkClasses}` : linkClasses}
+          <NavLink
+            to="/services"
+            className={({ isActive }) => isActive ? `${linkClasses} ${activeLinkClasses}` : linkClasses}
           >
             Our Services
           </NavLink>
         </li>
         <li>
-          <NavLink 
-            to="/about" 
-            className={({ isActive }) => isActive? `${linkClasses} ${activeLinkClasses}` : linkClasses}
+          <NavLink
+            to="/about"
+            className={({ isActive }) => isActive ? `${linkClasses} ${activeLinkClasses}` : linkClasses}
           >
             About Us
           </NavLink>
         </li>
         <li>
-          <NavLink 
-            to="/quote" 
-            className={({ isActive }) => isActive? `${linkClasses} ${activeLinkClasses}` : linkClasses}
+          <NavLink
+            to="/quote"
+            className={({ isActive }) => isActive ? `${linkClasses} ${activeLinkClasses}` : linkClasses}
           >
             Request A Quote
           </NavLink>
         </li>
         <li>
-          <NavLink 
-            to="/contact" 
-            className={({ isActive }) => isActive? `${linkClasses} ${activeLinkClasses}` : linkClasses}
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => isActive ? `${linkClasses} ${activeLinkClasses}` : linkClasses}
           >
             Contact Us
           </NavLink>
         </li>
         <li> {/* Added FAQ Link [1] */}
-          <NavLink 
-            to="/faq" 
-            className={({ isActive }) => isActive? `${linkClasses} ${activeLinkClasses}` : linkClasses}
+          <NavLink
+            to="/faq"
+            className={({ isActive }) => isActive ? `${linkClasses} ${activeLinkClasses}` : linkClasses}
           >
             FAQ
           </NavLink>
