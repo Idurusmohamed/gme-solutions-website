@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const timeoutRef = useRef(null);
-  
+
   const location = useLocation(); // <-- 2. Get the current page location
   const isHomePage = location.pathname === '/'; // Check if we are on the homepage
 
@@ -48,16 +48,16 @@ const Header = () => {
       <Link to="/" aria-label="GME Solutions Homepage">
         <Logo className="h-10 w-auto" />
       </Link>
-      
-      <div 
+
+      <div
         className="relative"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <MenuToggle toggle={() => setIsMenuOpen(!isMenuOpen)} isOpen={isMenuOpen} />
 
-        <MobileMenu 
-          isOpen={isMenuOpen} 
+        <MobileMenu
+          isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
