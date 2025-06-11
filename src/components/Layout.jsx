@@ -1,22 +1,24 @@
-// src/components/Layout.jsx
 import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { SpeedInsights } from "@vercel/speed-insights/react"; // <-- 1. Import the new component
 import Header from './Header';
-// import Navigation from './Navigation'; // REMOVE THIS IMPORT
 import Footer from './Footer';
 
 const Layout = () => {
   return (
+    // Your important flexbox container is preserved
     <div className="flex flex-col min-h-screen">
       <Header />
-      {/* <Navigation /> REMOVE THIS LINE */}
+      
+      {/* Your flex-grow main element is preserved */}
       <main className="flex-grow">
         <Outlet />
       </main>
+      
       <Footer />
-      {/* 2. Add this component here. It listens for navigation events 
-           and automatically scrolls the new page to the top.
-      */}
+      
+      {/* All functional components are placed here at the end */}
       <ScrollRestoration />
+      <SpeedInsights /> {/* <-- 2. Add the Speed Insights component here */}
     </div>
   );
 };
