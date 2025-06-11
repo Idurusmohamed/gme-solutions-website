@@ -1,24 +1,25 @@
 import React from 'react';
-// 1. Import Outlet, ScrollRestoration, and now useLocation
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom'; 
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = () => {
-  // 2. Get the current page's location information
   const location = useLocation();
-  // Check if the current page is the homepage
-  const isHomePage = location.pathname === '/';
+
+  // --- NEW, MORE PRECISE LOGIC ---
+  // 1. Define an array of only the pages that need top padding.
+  const pagesWithPadding = ['/about', '/contact', '/faq'];
+
+  // 2. Check if the current page's path is in our list.
+  const needsPadding = pagesWithPadding.includes(location.pathname);
 
   return (
-    // Your existing flexbox structure is preserved
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      {/* 3. The <main> element now has a DYNAMIC className */}
-      {/* It adds top padding to every page EXCEPT the homepage */}
-      <main className={`flex-grow ${isHomePage ? '' : 'pt-24 md:pt-28'}`}>
+      {/* 3. The className now uses our new logic and a smaller padding value. */}
+      <main className={`flex-grow ${needsPadding ? 'pt-24' : ''}`}>
         <Outlet />
       </main>
       
