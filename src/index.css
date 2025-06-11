@@ -10,8 +10,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark; /* Informs the browser about supported color schemes */
-  
+  color-scheme: light dark;
+  /* Informs the browser about supported color schemes */
+
   /* Default dark mode text and background (will apply if no other styles override for dark mode) */
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -23,24 +24,28 @@
 }
 
 body {
-  @apply bg-white; /* Tailwind utility to set a light background by default.
+  @apply bg-white;
+  /* Tailwind utility to set a light background by default.
                      This overrides the background-color from :root for light mode.
                      For dark mode, you'd typically use Tailwind's dark: prefix on elements
                      (e.g., dark:bg-gray-900) or configure dark mode in tailwind.config.js.
                      */
-  margin: 0;      /* Good practice: removes default browser margins.
+  margin: 0;
+  /* Good practice: removes default browser margins.
                      */
-  
+
   /* --- CRITICAL FIX: REMOVED THESE LINES --- */
   /* display: flex;
                      */
   /* place-items: center; */
   /* --- END OF CRITICAL FIX --- */
-  
-  min-width: 320px; /* Ensures a minimum responsive width. */
-  min-height: 100vh; /* Ensures the body takes at least the full viewport height.
+
+  min-width: 320px;
+  /* Ensures a minimum responsive width. */
+  min-height: 100vh;
+  /* Ensures the body takes at least the full viewport height.
                      */
-  
+
   /* Font properties from :root will generally be inherited by the body, 
      unless overridden by Tailwind's base styles or specific utility classes.
      */
@@ -103,6 +108,7 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   /* REMOVED light mode 'a:hover' style */
   /*
   a:hover {
