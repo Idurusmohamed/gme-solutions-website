@@ -46,7 +46,8 @@ const RequestQuotePage = () => {
   };
 
   const onSubmit = (data) => {
-    console.log('Form Data Submitted:', data);
+    {/*console.log('Form Data Submitted:', data);*/} // For debugging, you can log the data to the console
+    // Here you would typically send the data to your backend or an API endpoint
     alert('Quote request submitted! We will get back to you soon.');
     setIsSubmitted(true); // <-- 2. Show success screen instead of resetting immediately
   };

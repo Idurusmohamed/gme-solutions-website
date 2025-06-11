@@ -33,7 +33,8 @@ const ContactPage = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log('Contact Form Data:', data);
+    {/*console.log('Contact Form Data:', data);*/} // For debugging, you can log the data to the console
+    // Here you would typically send the data to your backend or an API endpoint
     alert('Thank you for your message! We will get back to you soon.');
     reset();
   };
