@@ -1,4 +1,3 @@
-import React from 'react';
 
 // Your new logo with a lightning bolt symbol.
 // The `fill="currentColor"` means its color will be determined by the text color of its parent.

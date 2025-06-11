@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom'; // <-- 1. Import useLocation
 import MobileMenu from './MobileMenu';
 import MenuToggle from './MenuToggle';

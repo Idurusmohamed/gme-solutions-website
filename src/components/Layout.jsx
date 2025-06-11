@@ -1,5 +1,4 @@
 // src/components/Layout.jsx
-import React from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Header from './Header';
 // import Navigation from './Navigation'; // REMOVE THIS IMPORT

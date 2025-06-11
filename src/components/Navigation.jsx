@@ -1,5 +1,4 @@
 // src/components/Navigation.jsx
-import React from 'react';
 import { NavLink } from 'react-router-dom'; // Using NavLink for active link styling [1]
 
 const Navigation = () => {
