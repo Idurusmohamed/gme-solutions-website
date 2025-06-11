@@ -87,7 +87,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Call to Action Section (from HomePage, adapted for ServicesPage) */}
-      <section className="py-16 lg:py-20 bg-blue-700 text-white">
+      <section className="py-16 lg:py-20 bg-gradient-to-r from-gray-900 to-blue-950 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">READY TO GET YOUR FREIGHT MOVING?</h2>
           <p className="text-lg text-blue-100 mb-8 max-w-xl mx-auto">
