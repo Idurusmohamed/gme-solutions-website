@@ -32,12 +32,30 @@ const FormInput = ({ icon, id, type, placeholder, register, error, validation, r
 const ContactPage = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  const onSubmit = (data) => {
-    {/*console.log('Contact Form Data:', data);*/ } // For debugging, you can log the data to the console
-    // Here you would typically send the data to your backend or an API endpoint
-    alert('Thank you for your message! We will get back to you soon.');
-    reset();
-  };
+  // ...
+const onSubmit = async (data) => {
+  setIsSubmitting(true);
+  try {
+    // We now send the data to our OWN backend endpoint
+    const response = await fetch('http://localhost:3001/api/contact', { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      setIsSubmitted(true);
+      reset();
+    } else {
+      alert('There was an error sending your message. Please try again.');
+    }
+  } catch (error) {
+    console.error('Form submission error:', error);
+    alert('There was an error sending your message. Please try again.');
+  }
+  setIsSubmitting(false);
+};
+// ...
 
   return (
     <div className="bg-gray-50 py-12 md:py-20 px-4">
