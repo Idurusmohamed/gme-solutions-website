@@ -31,7 +31,9 @@ const FormInput = ({ icon, id, type, placeholder, register, error, validation, r
 
 const ContactPage = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
+  // --- FIX: These lines must be present to create the state variables ---
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   // ...
 const onSubmit = async (data) => {
   setIsSubmitting(true);
