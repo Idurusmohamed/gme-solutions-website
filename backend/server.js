@@ -1,10 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose'); // <-- Import mongoose
+const mongoose = require('mongoose');
+const { Resend } = require('resend'); // <-- 1. Import Resend
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const resend = new Resend(process.env.RESEND_API_KEY); // <-- 2. Initialize Resend
 
 // --- Middleware ---
 app.use(cors());
@@ -16,15 +18,12 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('MongoDB connection error:', err));
 
 // --- Database Schema and Model ---
-// A Schema defines the structure of our documents in the database.
 const contactSubmissionSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   message: { type: String, required: true },
   submittedAt: { type: Date, default: Date.now },
 });
-
-// A Model is a wrapper that lets us interact with a specific collection in the DB.
 const ContactSubmission = mongoose.model('ContactSubmission', contactSubmissionSchema);
 
 
@@ -36,19 +35,37 @@ app.get('/', (req, res) => {
 // --- UPDATED Endpoint for handling contact form submissions ---
 app.post('/api/contact', async (req, res) => {
   try {
-    console.log('Received contact form data:', req.body);
+    const { name, email, message } = req.body;
+    console.log('Received contact form data:', { name, email });
 
-    // Create a new submission document using our Model
-    const newSubmission = new ContactSubmission({
-      name: req.body.name,
-      email: req.body.email,
-      message: req.body.message,
-    });
-
-    // Save the new document to the database
+    // Step A: Save the new submission to the database
+    const newSubmission = new ContactSubmission({ name, email, message });
     await newSubmission.save();
-
     console.log('Data saved to database!');
+
+    // --- 3. Step B: Send the email notification ---
+    try {
+      await resend.emails.send({
+        from: 'GME Website <noreply@gmesolutionsllc.com>', // Must be from your verified domain
+        to: 'ahmed@gmesolutionsllc.com', // The email address that will receive the notification
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h1>New Message from gmesolutionsllc.com</h1>
+          <p>You have received a new message via your contact form.</p>
+          <hr>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      });
+      console.log('Email notification sent successfully!');
+    } catch (emailError) {
+      console.error('Error sending email:', emailError);
+      // We don't send an error response here because the data was still saved successfully.
+      // We just log the email error on the server.
+    }
+
     res.status(200).json({ message: 'Form data received and saved successfully!' });
 
   } catch (error) {
