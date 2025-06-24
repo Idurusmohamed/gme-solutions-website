@@ -82,7 +82,7 @@ const HomePage = () => {
         </div>
       </section>
 
-// --- NEW ANIMATED STATISTICS SECTION ---
+{/* --- NEW ANIMATED STATISTICS SECTION ---*/}
       <section className="py-16 lg:py-24 bg-gray-800 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
